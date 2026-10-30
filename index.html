@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="JARVIS">
+<meta name="theme-color" content="#05070a">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="stylesheet" href="styles.css">
+<title>JARVIS</title>
+</head>
+<body>
+<div id="app">
+  <header class="top">
+    <span class="brand" id="brand">JARVIS</span>
+    <span class="chip" id="chip">Sin IA</span>
+  </header>
+
+  <div id="banner" class="banner" hidden>
+    <span id="banner-text"></span>
+    <button id="banner-close" type="button">Cerrar</button>
+  </div>
+
+  <main>
+    <section id="view-home" class="view active">
+      <div class="orb-wrap">
+        <button id="orb" class="idle" type="button" aria-label="Hablar con JARVIS">
+          <span class="halo"></span><span class="halo h2"></span>
+          <span class="ring r1"></span><span class="ring r2"></span><span class="ring r3"></span>
+          <span class="core"></span>
+        </button>
+      </div>
+      <div id="state-label" class="state">Tocá para hablar</div>
+      <div id="you" class="you"></div>
+      <div id="reply-box" class="reply-box">
+        <div id="reply-agent" class="reply-agent"></div>
+        <div id="reply" class="reply"></div>
+      </div>
+      <form id="text-form" class="text-form" autocomplete="off">
+        <input id="text-input" type="text" placeholder="Escribí un mensaje" enterkeyhint="send" autocapitalize="sentences">
+        <button type="submit" class="primary">Enviar</button>
+      </form>
+    </section>
+    <section id="view-history" class="view"></section>
+    <section id="view-agents" class="view"></section>
+    <section id="view-memory" class="view"></section>
+    <section id="view-settings" class="view"></section>
+  </main>
+
+  <nav class="tabs">
+    <button type="button" data-view="home" class="active"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.5"/><circle cx="12" cy="12" r="9"/></svg>Inicio</button>
+    <button type="button" data-view="history"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Historial</button>
+    <button type="button" data-view="agents"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6"/><rect x="14" y="4" width="6" height="6"/><rect x="4" y="14" width="6" height="6"/><rect x="14" y="14" width="6" height="6"/></svg>Agentes</button>
+    <button type="button" data-view="memory"><svg viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></svg>Memoria</button>
+    <button type="button" data-view="settings"><svg viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg>Ajustes</button>
+  </nav>
+
+  <div id="modal" class="modal" hidden>
+    <div class="sheet">
+      <h3 id="m-title"></h3>
+      <p id="m-text"></p>
+      <textarea id="m-input" rows="5" hidden></textarea>
+      <div class="row"><button id="m-cancel" type="button" class="ghost">Cancelar</button><button id="m-ok" type="button" class="primary">Aceptar</button></div>
+    </div>
+  </div>
+</div>
+<script type="module" src="app.js"></script>
+</body>
+</html>

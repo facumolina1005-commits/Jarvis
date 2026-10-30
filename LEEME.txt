@@ -1,0 +1,38 @@
+JARVIS - GUIA RAPIDA (todo desde el iPhone)
+
+PARTE 1 - PUBLICAR LA APP (gratis, sin IA, funciona sola)
+1. En la app Archivos, tocá jarvis.zip: iOS crea una carpeta "jarvis" con todos los archivos.
+2. En Safari entrá a github.com e iniciá sesión. Creá un repositorio llamado "jarvis" (Public).
+3. En el repositorio: Add file > Upload files > Elegir archivos > Examinar > abrí la carpeta "jarvis",
+   tocá Seleccionar y marcá TODOS los archivos > Abrir. Esperá que terminen de subir > Commit changes.
+   (GitHub NO descomprime zips y desde el iPhone no se pueden subir carpetas: por eso es una carpeta plana.)
+4. Settings > Pages > Branch: main, carpeta /(root) > Save. Esperá 1 o 2 minutos.
+5. Abrí https://TUUSUARIO.github.io/jarvis/ en Safari > Compartir > Añadir a pantalla de inicio.
+6. Probá escribiendo: ayuda
+
+Si cambiás un archivo despues, subí el numero de versión en sw.js (jarvis-v1 > jarvis-v2) para que el iPhone lo actualice.
+
+PARTE 2 - MODO CON IA (opcional; la IA de Claude requiere crédito prepago, Gemini tiene plan gratis con limites)
+Necesitás un servidor propio para proteger las claves.
+A. cloudflare.com > Workers & Pages > Create > Hello World > Deploy > Edit code.
+   Borrá todo y pegá el contenido de cloudflare-worker.js > Deploy.
+B. En el Worker: Settings > Variables and Secrets. Agregá (tipo Secret):
+   APP_TOKEN = una contraseña larga inventada por vos
+   ALLOWED_ORIGIN = https://TUUSUARIO.github.io   (sin barra al final)
+   ANTHROPIC_API_KEY = tu clave de console.anthropic.com   (y/o)
+   GEMINI_API_KEY = tu clave de aistudio.google.com
+C. En JARVIS > Ajustes: pegá la URL del Worker y el APP_TOKEN, tocá "Probar conexión",
+   elegí proveedor y cambiá Modo a "Con IA".
+
+PARTE 3 - COPIA EN LA NUBE (opcional)
+1. supabase.com > New project. SQL Editor: pegá supabase.sql > Run.
+2. Project Settings > API: copiá la URL y la clave secreta (service role / secret).
+3. En el Worker agregá los secrets SUPABASE_URL y SUPABASE_SERVICE_KEY.
+4. En Ajustes: "Subir a la nube" / "Bajar de la nube".
+
+LIMITES REALES DE iOS
+- No hay escucha permanente ni segundo plano: el micrófono se activa tocando el círculo.
+- El reconocimiento de voz de Safari puede fallar en la app instalada: usá el micrófono del teclado.
+- Los recordatorios avisan solo con JARVIS abierto (no hay notificaciones push).
+- Siri Atajos: Atajos > Nuevo > "Abrir URL" con la dirección de tu JARVIS > nombre "Jarvis":
+  así decís "Oye Siri, Jarvis" y se abre la app.
